@@ -38,9 +38,16 @@ public class FilterResource {
 		return Response.ok(image).build();
 	}
 	
-	@Path("bw")
-	@GET
-	public String filterToBW() {
-		return "B&W";
+	@Path("binaryimage")
+	@POST
+	@Consumes(MediaType.APPLICATION_OCTET_STREAM)
+	@Produces({ "image/png", "image/jpg" })
+	public Response filterToBinaryImage(InputStream inputStream) throws IOException {
+
+		BufferedImage image = new ImageBuilder(inputStream)
+				.filter(Filters.BINARYIMAGE)
+				.build();
+		
+		return Response.ok(image).build();
 	}
 }

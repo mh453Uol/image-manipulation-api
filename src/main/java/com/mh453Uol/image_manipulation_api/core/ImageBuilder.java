@@ -6,6 +6,7 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import com.mh453Uol.image_manipulation_api.core.filters.BinaryImage;
 import com.mh453Uol.image_manipulation_api.core.filters.Filters;
 import com.mh453Uol.image_manipulation_api.core.filters.Grayscale;
 
@@ -27,6 +28,10 @@ public class ImageBuilder implements IImageBuilder {
 		switch(filter) {
 			case GRAYSCALE:{
 				image.setFilter(new Grayscale());
+				break;
+			}
+			case BINARYIMAGE:{
+				image.setFilter(new BinaryImage());
 				break;
 			}
 		}
