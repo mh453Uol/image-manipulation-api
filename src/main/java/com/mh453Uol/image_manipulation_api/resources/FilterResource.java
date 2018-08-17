@@ -30,7 +30,6 @@ public class FilterResource {
 	@Consumes(MediaType.APPLICATION_OCTET_STREAM)
 	@Produces({ "image/png", "image/jpg" })
 	public Response filterToGrayscale(InputStream inputStream) throws IOException {
-				
 		BufferedImage image = new ImageBuilder(inputStream)
 			.filter(Filters.GRAYSCALE)
 			.build();
