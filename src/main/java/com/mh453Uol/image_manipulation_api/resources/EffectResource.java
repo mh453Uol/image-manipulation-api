@@ -29,4 +29,19 @@ public class EffectResource {
 		
 		return Response.ok(image).build();
 	}
+	
+	@Path("/flip")
+	@POST
+	@Consumes(MediaType.APPLICATION_OCTET_STREAM)
+	@Produces({ "image/png", "image/jpg" })
+	public Response addFlipImageEffect(InputStream inputImage) throws IOException {
+		
+		BufferedImage image = new ImageBuilder(inputImage)
+				.effect(Effects.FLIP)
+				.build();
+		
+		return Response.ok(image).build();
+	}
+	
+	
 }

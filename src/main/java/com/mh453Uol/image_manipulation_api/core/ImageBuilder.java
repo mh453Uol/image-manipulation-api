@@ -7,6 +7,7 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 import com.mh453Uol.image_manipulation_api.core.effects.Effects;
+import com.mh453Uol.image_manipulation_api.core.effects.Flip;
 import com.mh453Uol.image_manipulation_api.core.effects.MirrorImage;
 import com.mh453Uol.image_manipulation_api.core.filters.BinaryImage;
 import com.mh453Uol.image_manipulation_api.core.filters.Filters;
@@ -45,6 +46,10 @@ public class ImageBuilder implements IImageBuilder {
 		switch (effect) {
 			case MIRROR_IMAGE: {
 				image.setEffect(new MirrorImage());
+				break;
+			}
+			case FLIP: {
+				image.setEffect(new Flip());
 				break;
 			}
 		}
