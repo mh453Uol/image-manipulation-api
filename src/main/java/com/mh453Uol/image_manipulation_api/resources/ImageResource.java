@@ -12,4 +12,9 @@ public class ImageResource {
 		return new FilterResource();
 	}
 	
+	@Path("/effect")
+	public EffectResource getEffectResource() {
+		return new EffectResource();
+	}
+	
 }

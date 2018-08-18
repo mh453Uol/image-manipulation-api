@@ -6,18 +6,20 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import com.mh453Uol.image_manipulation_api.core.effects.Effects;
+import com.mh453Uol.image_manipulation_api.core.effects.MirrorImage;
 import com.mh453Uol.image_manipulation_api.core.filters.BinaryImage;
 import com.mh453Uol.image_manipulation_api.core.filters.Filters;
 import com.mh453Uol.image_manipulation_api.core.filters.Grayscale;
 
 public class ImageBuilder implements IImageBuilder {
 	private Image image;
-	
+
 	public ImageBuilder(InputStream stream) throws IOException {
 		image = new Image();
 		image.setImage(ImageIO.read(stream));
 	}
-	
+
 	@Override
 	public BufferedImage build() {
 		return image.getImage();
@@ -25,13 +27,24 @@ public class ImageBuilder implements IImageBuilder {
 
 	@Override
 	public IImageBuilder filter(Filters filter) {
-		switch(filter) {
-			case GRAYSCALE:{
+		switch (filter) {
+			case GRAYSCALE: {
 				image.setFilter(new Grayscale());
 				break;
 			}
-			case BINARYIMAGE:{
+			case BINARYIMAGE: {
 				image.setFilter(new BinaryImage());
+				break;
+			}
+		}
+		return this;
+	}
+
+	@Override
+	public IImageBuilder effect(Effects effect) {
+		switch (effect) {
+			case MIRROR_IMAGE: {
+				image.setEffect(new MirrorImage());
 				break;
 			}
 		}
